@@ -21,6 +21,39 @@ def dijkstra_all_reachable_nodes(graph: dict, start: str) -> dict:
                 heapq.heappush(priorityQueue, (distance, neighbor))
     return distances
 
+"""
+    Implements Dijkstra's algorithm to find the shortest path 
+    from `start` node to `target` node in a weighted graph.
+
+    Parameters:
+    - graph (dict): Adjacency list representation of the graph.
+    - start (str): The starting node.
+    - target (str): The target node.
+
+    Returns:
+    - int: The shortest distance from start to target, or -1 if no path exists.
+"""
+def dijkstra_shortest_path_to_target(graph: dict, start: str, target: str) -> int:
+    # initialize distance dictionary ==> keep track of the each nodes smallest distance from start
+    # initialize priorityQueue ==> allow us to explore nodes with smallest distances
+    distances = {node: float("inf") for node in graph}
+    distances[start] = 0
+    priorityQueue = [(0, start)]
+
+    while priorityQueue:
+        current_distance, current_node = heapq.heappop(priorityQueue)
+        if current_node == target:
+            return current_distance
+        if current_distance > distances[current_node]:
+            continue
+
+        for neighbor in graph[current_node]:
+            distance = current_distance + graph[current_node][neighbor]
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(priorityQueue, (distance, neighbor))
+    return -1
+
 def main():
     graph = {
         'A': {'B': 4, 'C': 1},
@@ -33,7 +66,9 @@ def main():
         'N': {'P': 3}
     }
 
-    distances = dijkstra_all_reachable_nodes(graph, "A")
-    print(distances)
+    # distances = dijkstra_all_reachable_nodes(graph, "A")
+    # print(distances)
+    distance = dijkstra_shortest_path_to_target(graph, "A", "A")
+    print(distance)
 if __name__ == "__main__":
     main()
