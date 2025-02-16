@@ -1,1 +1,1 @@
-# N-Puzzl
+# N-Puzzle
