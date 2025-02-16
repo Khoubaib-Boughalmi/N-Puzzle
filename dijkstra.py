@@ -119,10 +119,10 @@ def main():
 
     # distances = dijkstra_all_reachable_nodes(graph, "A")
     # print(distances)
-    # distance = dijkstra_shortest_path_to_target(graph, "A", "A")
-    # print(distance)
-    path = djikstra_predecessor_shortest_path(graph, "A", "F")
-    print(path)
+    distance = dijkstra_shortest_path_to_target(graph, "A", "B")
+    print(distance)
+    # path = djikstra_predecessor_shortest_path(graph, "A", "F")
+    # print(path)
 
 if __name__ == "__main__":
     main()
