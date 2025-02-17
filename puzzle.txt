@@ -1,7 +1,5 @@
-# ignore any thing after #
-# first number has to be the size of the matrix (has to be a valid positive number greater or equal to 3)
-# PONIES
--3
+# this is a comment
+3
 3 2 6 #another comment
 1 4 0
-8# 7 5
+8 7 5
