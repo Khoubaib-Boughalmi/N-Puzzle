@@ -119,7 +119,7 @@ def main():
 
     # distances = dijkstra_all_reachable_nodes(graph, "A")
     # print(distances)
-    distance = dijkstra_shortest_path_to_target(graph, "A", "B")
+    distance = dijkstra_shortest_path_to_target(graph, "A", "F")
     print(distance)
     # path = djikstra_predecessor_shortest_path(graph, "A", "F")
     # print(path)
