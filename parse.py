@@ -1,7 +1,12 @@
 
 def readPuzzleFile(path: str) -> list[str]:
-    with open(path, "r") as file:
-        lines = file.readlines()
+    file = path.split(".")
+    if len(file) != 2:
+        raise Exception("Wrong path name")
+    if file[1] != "txt":
+        raise ValueError("Puzzle map must have a .txt extension")
+    with open(path, "r") as f:
+        lines = f.readlines()
     return lines
 
 def cleanPuzzleFileLines(lines: list[str]) -> list[str]:
@@ -50,6 +55,12 @@ def validatePuzzleFile(lines: list[str]) -> list[list[str]]:
         if len(line) != puzzleSize:
             raise ValueError(f"puzzle width has to be match puzzle size: {puzzleSize}x{puzzleSize}")
     convertPuzzleFileToMatrix(puzzle, puzzleSize)
+    return puzzle
+
+def parsePuzzleFile(path) -> list[list[int]]:
+    lines = readPuzzleFile(path)
+    strippedLines = cleanPuzzleFileLines(lines)
+    puzzle = validatePuzzleFile(strippedLines)
     return puzzle
 
 def main():
